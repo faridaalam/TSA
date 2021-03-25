@@ -2,6 +2,8 @@ package com.revature.service;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
+
 import com.revature.model.LoginTemplate;
 import com.revature.model.User;
 

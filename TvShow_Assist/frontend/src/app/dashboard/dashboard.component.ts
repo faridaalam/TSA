@@ -15,7 +15,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit  {
    user? : User;
   
-  image = 'assets/Background.jfif';
+  image = 'assets/Background.jpeg';
 
   
   constructor(private userService: UserServiceService, 
