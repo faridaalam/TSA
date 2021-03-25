@@ -1,14 +1,22 @@
 package com.revature.service;
 
+import java.awt.print.Printable;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.HibernateError;
+import org.hibernate.HibernateException;
+import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.model.LoginTemplate;
 import com.revature.model.User;
 import com.revature.repository.UserRepository;
+
+import antlr.collections.Stack;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{
@@ -23,9 +31,17 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public boolean registerUser(User user) {
+	public boolean registerUser(User user){
+	
+	try {
+		
 		userRepository.save(user);
-		return user.getId() != 0;
+		return true;
+	} catch (Exception e) {
+		
+		return false;
+	}
+	
 	}
 
 	@Override

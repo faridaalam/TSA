@@ -11,19 +11,19 @@ public class User {
 	@SequenceGenerator(name="userSequence", sequenceName="USER_SEQ", allocationSize=1)
 	private int id;
 	
-	@Column(name="U_NAME", unique=true, nullable=false)
+	@Column(name="U_NAME",nullable=false) 
 	private String name;
 	
-	@Column(name="U_LASTNAME")
+	@Column(name="U_LASTNAME",nullable=false)
 	private String lastName;
 	
-	@Column(name="EMAIL")
+	@Column(name="EMAIL", unique=true, nullable=false)
 	private String email;
 	
-	@Column(name="PASS_WORD")
+	@Column(name="PASS_WORD",nullable=false)
 	private String password;
 	
-	@Column(name="CITY")
+	@Column(name="CITY", nullable=false)
 	private String city;
 	
 	public User() {

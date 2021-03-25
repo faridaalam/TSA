@@ -28,11 +28,13 @@ export class LoginComponent implements OnInit  {
   public loginFromService(): void {
     this.userService.signIn(this.loginTemplate).subscribe(data => {
       this.user = data;
-      if (this.user != null)
+      if (this.user != null) {
       console.log(this.user.name);
       this.userService.changeUser(this.user);
-      this.router.navigate(["/dashboard"]); }, 
-      error => this.clientMessage.message = "UN and PW is incorrect");
+      this.router.navigate(["/dashboard"]); }
+    
+    else { this.clientMessage.message = "Email or Password is incorrect" }}, 
+      error => this.clientMessage.message = "Internal Server Error");
 
       
       
