@@ -1,0 +1,40 @@
+    
+
+
+
+<div class="card text-white bg-info mb-3" style="margin-top: 50px;" >
+    <div class="card-header"><h3>Register</h3></div>
+    <div class="card-body">
+      <h4 class="card-title">New user?</h4>
+      <p class="card-text">Please fill out the form below to register.</p>
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+
+      <div class="form-group">
+        <label for="firstName">First name</label>
+        <input type="text" class="form-control" id="firstName" placeholder="First name">
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last name</label>
+        <input type="text" class="form-control" id="lastName" placeholder="Last name">
+      </div>
+
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" placeholder="City">
+      </div>
+      <a type="button" (click) = "registerUserFromService()" class="btn btn-primary btn-lg" style="text-decoration: none;" > Sign Up</a>
+      <div >
+          {{clientMessage.message}}
+      </div>
+    </div>
+  </div>
