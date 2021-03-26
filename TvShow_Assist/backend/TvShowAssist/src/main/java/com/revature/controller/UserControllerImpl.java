@@ -44,10 +44,13 @@ public class UserControllerImpl implements UserController{
 	
 	@PostMapping("/login")
 	public @ResponseBody User login(@RequestBody LoginTemplate loginTemplate) {
+		try {
 		System.out.println("test");
 		
 		return userService.login(loginTemplate);
-		
+		} catch(Exception e) {
+			return null;
+		}
 	}
 	
 
