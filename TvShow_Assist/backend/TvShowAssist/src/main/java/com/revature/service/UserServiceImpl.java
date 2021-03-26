@@ -1,22 +1,14 @@
 package com.revature.service;
 
-import java.awt.print.Printable;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.hibernate.HibernateError;
-import org.hibernate.HibernateException;
-import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.model.LoginTemplate;
 import com.revature.model.User;
 import com.revature.repository.UserRepository;
-
-import antlr.collections.Stack;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{
@@ -62,6 +54,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User login(LoginTemplate loginTemplate) {
 		
+		try {
 		//Tests
 		System.out.println("HIT THE LOGIN METHOD");
 		System.out.println(loginTemplate);
@@ -75,8 +68,20 @@ public class UserServiceImpl implements UserService{
 		System.out.println(user);
 		if (loginTemplate.getPassword().equals(user.getPassword())) {
 			return user;
-		}
+		}else return null;
+		} catch (Exception e){
 		return null;
+	}}
+
+	@Override
+	public boolean updateUser(User user) {
+		try {
+			userRepository.update(user);
+			return true;
+		} catch (Exception e) {
+			
+			return false;
+		}
 	}
 	
 }

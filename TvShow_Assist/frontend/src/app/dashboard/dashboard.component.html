@@ -1,13 +1,97 @@
 <app-navbar></app-navbar>
 <div class="jumbotron">
-    <img class="image-center" style="width: 100%" src="{{ image }}" />
-    <h1 style = "position:fixed; display:none; width:100%; height:100%; " class="display-3">Welcome Brockton </h1>
-    <p class="lead">Welcome to TV Show Assist, where you can share your favorite Movies and connect based on your likes</p>
-    <hr class="my-4">
-    <p>Join and tell your friends to join</p>
-    <h1>{{this.user?.name}} </h1>
+  <img
+    class="image-center"
+    style="position: relative; width: 100%"
+    src="{{ image }}"
+  />
+  <div
+    style="position: absolute; top: 450px; left: 50px; right: 50px; width: 50%"
+  >
+    <h1>Welcome {{ this.user?.name }}</h1>
     <p class="lead">
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+      Welcome to TV Show Assist, where you can share your favorite Movies and
+      connect based on your likes
     </p>
-
   </div>
+</div>
+<br />
+<div
+  class="row row-cols-1 row-cols-md-3"
+  style="max-width: 100%; padding-left: 200px"
+>
+  <div class="col">
+    <div class="card" style="width: 60%">
+      <img src="../../assets/739854.jpg" style="width: 100%" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title font-weight-bolder">
+          The Falcon and The Winter Soldier
+        </h5>
+        <p class="card-text text-left font-weight-lighter">
+          Follow Marvel Studios' The Falcon and The Winter Soldier stars Anthony
+          Mackie as Sam Wilson aka The Falcon, and Sebastian Stan as Bucky
+          Barnes aka The Winter Soldier.
+        </p>
+        <a href="#" class="stretched-link"> FIND OUT MORE </a>
+      </div>
+    </div>
+    <hr class="my-4" />
+  </div>
+
+  <div class="col">
+    <div class="card justify-content-center" style="width: 60%">
+      <img src="../../assets/746929.jpg" style="width: 100%" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title font-weight-bolder">Superman & Lois</h5>
+        <p class="card-text text-left font-weight-lighter">
+          Follows the world's most famous superhero and comic books' most famous
+          journalist, as they deal with all the stress, pressures and
+          complexities that come with being working parents in today's society.
+        </p>
+        <a href="#" class="stretched-link"> FIND OUT MORE </a>
+      </div>
+    </div>
+    <hr class="my-4" />
+  </div>
+  <div class="col">
+    <div class="card" style="width: 60%">
+      <img
+        src="../../assets/722622.jpg"
+        class="card-img-top"
+        style="width: 100%"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title font-weight-bolder">American Gods</h5>
+        <p class="card-text font-weight-lighter">
+          A man serving three years in prison who is given an early release.
+          Shadow Moon is hired as Mr. Wednesday's bodyguard and finds himself in
+          a hidden world where a battle is brewing between the Old Gods and the
+          New Gods.
+        </p>
+        <a href="#" class="stretched-link"> FIND OUT MORE </a>
+      </div>
+    </div>
+    <hr class="my-4" />
+  </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="page-footer" style="background-color: #0f1824">
+  <p
+    class="small text-center"
+    style="padding-top: 40px; margin-bottom: 0; padding-bottom: 0"
+  >
+    © 2021 Home Box Office, Inc. All Rights Reserved.
+  </p>
+  <p
+    class="small text-center"
+    style="margin-top: 0px; padding-bottom: 20px; margin-bottom: 0"
+  >
+    This website may contain mature content.
+  </p>
+</div>

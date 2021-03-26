@@ -18,5 +18,7 @@ public interface UserService {
 	public User getByEmail(String email);
 	
 	public User login(LoginTemplate loginTemplate);
+	
+	public boolean updateUser(User user);
 
 }
