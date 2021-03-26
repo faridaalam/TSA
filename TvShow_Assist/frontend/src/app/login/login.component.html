@@ -1,65 +1,63 @@
-
-
-
-<div class="jumbotron" >
-  <h1 class="display-5" style="text-align: center;">Welcome to <p style="text-align: center;" >
-      TV Show Assist App</p></h1>
-
+<div class="jumbotron">
+  <h1 class="display-5" style="text-align: center">
+    Welcome to
+    <p style="text-align: center">TV Show Assist App</p>
+  </h1>
 </div>
 <div class="row">
-        <div class="col-md-3"></div>
-  <div class="col-md-6" style="align-self: center;" >
-<div class="alert alert-dismissible alert-primary row" style="max-width: 100%; ">
-<div class="col-sm-6">
- 
-  <div class="card text-white bg-info mb-3" style="margin-top: 50px;" >
-    <div class="card-header" > <h3>Login</h3></div>
-    <div class="card-body">
-      <h4 class="card-title">Please Enter to Login</h4>
-     <!--  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-    
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" [(ngModel)]="loginTemplate.email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+  <div class="col-md-3"></div>
+  <div class="col-md-6" style="align-self: center">
+    <div
+      class="alert alert-dismissible alert-primary row"
+      style="max-width: 100%"
+    >
+      <div class="col-sm-6">
+        <div class="card text-white bg-info mb-3" style="margin-top: 50px">
+          <div class="card-header"><h3>Login</h3></div>
+          <div class="card-body">
+            <h4 class="card-title">Please Enter to Login</h4>
+            <!--  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input
+                type="email"
+                [(ngModel)]="loginTemplate.email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input
+                type="password"
+                [(ngModel)]="loginTemplate.password"
+                class="form-control"
+                id="exampleInputPassword1"
+                placeholder="Password"
+              />
+            </div>
+            <a
+              type="button"
+              (click)="loginFromService()"
+              class="btn btn-primary btn-lg"
+              style="text-decoration: none"
+            >
+              Sign In</a
+            >
+
+            <div id="anime" *ngIf="this.user == undefined">
+              {{ clientMessage.message }}
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" [(ngModel)]="loginTemplate.password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+
+      <div class="col-sm-6">
+        <app-register></app-register>
       </div>
-      <a  type="button" (click)="loginFromService()" class="btn btn-primary btn-lg" style="text-decoration: none;" > Sign In</a>
-      
-       <div *ngIf = "this.user == undefined">
-
-        {{clientMessage.message}}
-
-        
-
-
-       </div>
-
-
     </div>
   </div>
-
-
 </div>
-   
-
-
-<div class="col-sm-6">
-  <app-register></app-register>
-</div>
-</div>
-
-
-</div>
-
-
-</div>
-
-
-
-
- 
-
-
