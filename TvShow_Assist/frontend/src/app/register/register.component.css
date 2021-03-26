@@ -1,5 +1,4 @@
 #anime {
-  height: 100px;
   position: relative;
   animation-name: example;
   animation-duration: 2s;
@@ -13,6 +12,23 @@
 
   60% {
     transform: scale(1.2);
+    opacity: 1;
+  }
+}
+#register {
+  position: relative;
+  animation-name: example2;
+  animation-duration: 2s;
+}
+
+@keyframes example2 {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+
+  60% {
+    transform: translate(100px, 0);
     opacity: 1;
   }
 }
