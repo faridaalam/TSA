@@ -30,6 +30,11 @@ public class UserControllerImpl implements UserController{
 	public @ResponseBody ClientMessage registerUser(@RequestBody User user) {
 		return (userService.registerUser(user)) ? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
 	}
+	
+	@PostMapping("/update")
+	public @ResponseBody ClientMessage updateUser(@RequestBody User user) {
+		return (userService.updateUser(user)) ? UPDATE_SUCCESSFUL : UPDATE_FAIL;
+	}
 
 //	@PostMapping("/findUser")
 //	public @ResponseBody User findUser(@RequestBody User user, HttpServletRequest request) {

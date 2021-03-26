@@ -72,5 +72,16 @@ public class UserServiceImpl implements UserService{
 		} catch (Exception e){
 		return null;
 	}}
+
+	@Override
+	public boolean updateUser(User user) {
+		try {
+			userRepository.update(user);
+			return true;
+		} catch (Exception e) {
+			
+			return false;
+		}
+	}
 	
 }
