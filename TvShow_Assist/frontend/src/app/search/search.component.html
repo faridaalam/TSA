@@ -7,38 +7,59 @@
     ><h4>Search for your favorite shows</h4></label
   >
   <input #searchBox id="search-box" (input)="searchShows(searchBox.value)" />
-  <div class="search-result" style="max-width: 120%; margin-top: 50px">
+  <div
+    class="search-result"
+    style="
+      max-width: 120%;
+      margin-top: 50px;
+      min-height: 750px;
+      max-height: 750px;
+    "
+  >
     <div
       class="row row-cols-1 row-cols-md-4"
       style="max-width: 120%; padding-left: 50px"
     >
-      <div class="col" style="width: 100%" *ngFor="let s of shows$ | async">
+      <div
+        class="col"
+        style="width: 100%; margin-bottom: 40px"
+        *ngFor="let s of shows$ | async"
+      >
         <div class="card" style="width: 70%">
-          <a href="{{ s.url }}"
+          <a href="{{ s.url }} " target="_blank"
             ><img src="{{ s.image }}" style="width: 100%"
           /></a>
-          <div class="card-body" style="width: 100%">
+          <div
+            class="card-body"
+            style="width: 100%; min-height: 400px; max-height: 400px"
+          >
             <h5 class="card-title font-weight-bolder">
               {{ s.name }}
             </h5>
             <p class="card-text text-left font-weight-lighter">
               {{ s.summary }}
             </p>
-            <div>
-              <span>Status: </span>
-              <span>{{ s.status }}</span>
-            </div>
-            <div>
-              <span>Runtime: </span>
-              <span>{{ s.runtime }}</span>
-            </div>
-            <div>
-              <span>Premiered: </span>
-              <span>{{ s.premiered }}</span>
-            </div>
-            <div>
-              <span>Official Site: </span>
-              <span>{{ s.officialSite }}</span>
+            <div style="text-align: left">
+              <div>
+                <span>Status: </span>
+                <span>{{ s.status }}</span>
+              </div>
+              <div>
+                <span>Runtime: </span>
+                <span>{{ s.runtime }}</span>
+              </div>
+              <div>
+                <span>Premiered: </span>
+                <span>{{ s.premiered }}</span>
+              </div>
+              <div>
+                <span>Official Site: </span>
+                <span
+                  ><a href="{{ s.officialSite }}" target="_blank">{{
+                    s.officialSite
+                  }}</a></span
+                >
+              </div>
             </div>
           </div>
         </div>
