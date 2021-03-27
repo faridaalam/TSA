@@ -43,7 +43,7 @@ public registerUserService(user: User): Observable<ClientMessage> {
   )
 }
 
-shows: Shows = new Shows("", "", "", "", 0, "", "", "", "");
+shows: Shows = new Shows(0, "", "", "", "", 0, "", "", "", "");
 showList =  Array <Shows>();
 searchShows(term: string): Observable<Shows[]> {
   if(!term.trim()) {
@@ -61,7 +61,8 @@ searchShows(term: string): Observable<Shows[]> {
         
           for (let i of Array.of(data) ){
             
-            this.showList[j] = new Shows ("", "", "", "", 0, "", "", "", "");
+            this.showList[j] = new Shows (0, "", "", "", "", 0, "", "", "", "");
+            this.showList[j].id = i[j].show.id
             this.showList[j].url = i[j].show.url
             this.showList[j].name = i[j].show.name
             this.showList[j].language = i[j].show.language
