@@ -11,7 +11,7 @@ import { Shows } from './../models/shows.model';
 })
 export class SearchComponent implements OnInit {
 private searchTerm = new Subject<string>()
-shows$?:Observable<Shows[]>
+shows$?:Observable<any>
   constructor(private userService: UserServiceService) { }
 
   ngOnInit(): void {

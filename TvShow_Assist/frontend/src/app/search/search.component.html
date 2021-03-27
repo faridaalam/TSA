@@ -1,12 +1,48 @@
 <app-navbar></app-navbar>
-<div id="search-component">
-    <label for="search-box">Show Search</label>
-    <input #searchBox id= "search-box" (input)="searchShows(searchBox.value)"/>
-    <ul class = "search-result">
-                <li *ngFor="let s of shows$ | async" >
-                    <!--THe | async is called an Async Pipe and means that we are subscribing to an observable
-                    and doing something with it-->
-                    <!--these elements will load asynchrounsly-->
-                    <!--the $ indicates that cats will be an observable, NOT an array-->
-                </li>
-    </ul>
+<div
+  style="text-align: center; margin-top: 20px; margin-bottom: 50px"
+  id="search-component"
+>
+  <label for="search-box" style="margin-right: 30px"
+    ><h4>Search for your favorite shows</h4></label
+  >
+  <input #searchBox id="search-box" (input)="searchShows(searchBox.value)" />
+  <div class="search-result" style="max-width: 120%; margin-top: 50px">
+    <div
+      class="row row-cols-1 row-cols-md-4"
+      style="max-width: 120%; padding-left: 50px"
+    >
+      <div class="col" style="width: 100%" *ngFor="let s of shows$ | async">
+        <div class="card" style="width: 70%">
+          <a href="{{ s.url }}"
+            ><img src="{{ s.image }}" style="width: 100%"
+          /></a>
+          <div class="card-body" style="width: 100%">
+            <h5 class="card-title font-weight-bolder">
+              {{ s.name }}
+            </h5>
+            <p class="card-text text-left font-weight-lighter">
+              {{ s.summary }}
+            </p>
+            <div>
+              <span>Status: </span>
+              <span>{{ s.status }}</span>
+            </div>
+            <div>
+              <span>Runtime: </span>
+              <span>{{ s.runtime }}</span>
+            </div>
+            <div>
+              <span>Premiered: </span>
+              <span>{{ s.premiered }}</span>
+            </div>
+            <div>
+              <span>Official Site: </span>
+              <span>{{ s.officialSite }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

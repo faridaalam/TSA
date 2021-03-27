@@ -42,43 +42,58 @@ public registerUserService(user: User): Observable<ClientMessage> {
     catchError(this.handleError<any>('cannot register UN and PW'))
   )
 }
-shows: Shows = new Shows(0, "", "", "", "", "", 0, "", "", "", "");
-showList?: Shows [];
-searchShows(term: string): Observable<any| undefined> {
-  console.log(this.http.get<any>(`${this.showsURL}/search/shows?q=${term}`));
-  return this.http.get<any>(`${this.showsURL}/search/shows?q=${term}`)
-  // return this.http.get<any>(`${this.showsURL}/search/shows?q="girls"`)
-   }
-  //  this.showList?.push(this.shows))
-  //  if (this.showlist = null)
-  //   return this.showList;
-  //  else return null)
 
-  // searchShows(term: string): Observable<any | undefined> {
-  //   return this.http.get<any>(`${this.showsURL}/search/shows?q=${term}`)
-  //   .pipe (
-  //     map(data => {
-  //       const data1 = JSON.parse(data);
-  //       const showData = data1;
-  //       this.shows.id = showData.id;
-  //       this.shows.url = showData.url;
-  //       this.shows.name = showData.name;
-  //       this.shows.type = showData.type;
-  //       this.shows.language = showData.language;
-  //       this.shows.status = showData.status;
-  //       this.shows.runtime = showData.runtime;
-  //       this.shows.premiered = showData.premiered;
-  //       this.shows.officialSite = showData.officialSite;
-  //       this.shows.image = showData.image;
-  //       this.shows.summary = showData.officialSite;
-  //       console.log(this.shows)
-  //       return this.shows
-  //     }))
-  //    //  this.showList?.push(this.shows))
-  //    //  if (this.showlist = null)
-  //    //   return this.showList;
-  //    //  else return null)
-  //    }
+shows: Shows = new Shows("", "", "", "", 0, "", "", "", "");
+showList =  Array <Shows>();
+searchShows(term: string): Observable<Shows[]> {
+  if(!term.trim()) {
+    // if no search term exists, we send back an empty array as an observable
+    return of([]);
+  }
+  return this.http.get<any>(`${this.showsURL}/search/shows?q=${term}`).pipe(
+    map(data => {
+      
+    
+        let x = data.length;
+        
+        
+        for (let j = 0; j < x; j++){
+        
+          for (let i of Array.of(data) ){
+            
+            this.showList[j] = new Shows ("", "", "", "", 0, "", "", "", "");
+            this.showList[j].url = i[j].show.url
+            this.showList[j].name = i[j].show.name
+            this.showList[j].language = i[j].show.language
+            this.showList[j].status = i[j].show.status;
+            this.showList[j].runtime = i[j].show.runtime;
+            this.showList[j].premiered = i[j].show.premiered;
+            this.showList[j].officialSite = i[j].show.officialSite;
+            if ( (i[j].show.image == null) ||  (i[j].show.image.medium == null) ){
+              this.showList[j].image = "../../assets/image-not-found.jpg";
+            } else {
+            this.showList[j].image = i[j].show.image.medium;}
+            this.showList[j].summary = i[j].show.summary;
+            if (this.showList[j].summary != null ){
+            this.showList[j].summary = this.showList[j].summary.replace( /(<([^>]+)>)/ig, '');
+            this.showList[j].summary = this.showList[j].summary.slice(0,100);}
+            
+        
+       
+
+        
+      }
+    }
+       
+      
+        
+        return this.showList;
+        
+    })
+  )
+ 
+   }
+ 
 
 
 private handleError<T>(operation = 'operation', result?: T) {

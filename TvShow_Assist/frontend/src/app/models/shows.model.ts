@@ -1,8 +1,8 @@
 export class Shows {
-            id: number;
+           
             url: string;
             name: string;
-            type: string;
+            
             language: string;
             status: string;
             runtime: number;
@@ -12,11 +12,11 @@ export class Shows {
             summary: string;
 
 
-            constructor (id:number, url:string, name:string, type:string, language:string, status:string, runtime:number, premiered:string, officialSite:string, image: string, summary: string) {
-                this.id = id;
+            constructor ( url:string, name:string, language:string, status:string, runtime:number, premiered:string, officialSite:string, image: string, summary: string) {
+              
                 this.url = url;
                 this.name = name;
-                this.type = type;
+               
                 this.language = language;
                 this.status = status;
                 this.runtime = runtime;
