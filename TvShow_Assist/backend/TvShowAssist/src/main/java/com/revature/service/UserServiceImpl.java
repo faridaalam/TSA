@@ -70,6 +70,7 @@ public class UserServiceImpl implements UserService{
 			return user;
 		}else return null;
 		} catch (Exception e){
+			System.out.println("user is null");
 		return null;
 	}}
 

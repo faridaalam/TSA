@@ -9,7 +9,7 @@
     <p class="card-text">Please fill out the form below to register.</p>
 
     <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
+      <label for="exampleInputEmail12">Email address</label>
       <input
         type="email"
         [(ngModel)]="user.email"
@@ -17,19 +17,21 @@
         id="exampleInputEmail1"
         aria-describedby="emailHelp"
         placeholder="Enter email"
+        ngDefaultControl
       />
       <small id="emailHelp" class="form-text text"
         >We'll never share your email with anyone else.</small
       >
     </div>
     <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
+      <label for="exampleInputPassword12">Password</label>
       <input
         type="password"
         [(ngModel)]="user.password"
         class="form-control"
         id="exampleInputPassword1"
         placeholder="Password"
+        ngDefaultControl
       />
     </div>
 
@@ -41,6 +43,7 @@
         class="form-control"
         id="firstName"
         placeholder="First name"
+        ngDefaultControl
       />
     </div>
 
@@ -52,6 +55,7 @@
         [(ngModel)]="user.lastName"
         id="lastName"
         placeholder="Last name"
+        ngDefaultControl
       />
     </div>
 
@@ -63,6 +67,7 @@
         class="form-control"
         id="city"
         placeholder="City"
+        ngDefaultControl
       />
     </div>
     <a
@@ -71,6 +76,7 @@
       class="btn btn-primary btn-lg"
       [(ngModel)]="user.city"
       style="text-decoration: none"
+      ngDefaultControl
     >
       Sign Up</a
     >
