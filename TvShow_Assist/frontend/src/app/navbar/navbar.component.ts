@@ -1,6 +1,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserServiceService } from './../services/user-service.service';
 import { Component, OnInit } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -18,6 +19,7 @@ export class NavbarComponent implements OnInit {
 
   public logoutFromService(): void {
     this.router.navigate(["/"]);
+    
   //  this.userService.logout()
 
   }
