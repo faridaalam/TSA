@@ -1,65 +1,102 @@
 <app-navbar></app-navbar>
-<div
-  style="text-align: center; margin-top: 20px; margin-bottom: 50px"
-  id="search-component"
->
-  <label for="search-box" style="margin-right: 30px"
-    ><h4>Search for your favorite shows</h4></label
-  >
-  <input #searchBox id="search-box" (input)="searchShows(searchBox.value)" />
+<div class="jumbotron" style="margin-bottom: 0; padding-bottom: 0">
+  <img
+    class="image-center"
+    style="position: relative; width: 100%; margin-bottom: 0; padding-bottom: 0"
+    src="{{ image }}"
+  />
   <div
-    class="search-result"
     style="
-      max-width: 120%;
-      margin-top: 50px;
-      min-height: 750px;
-      max-height: 750px;
+      position: absolute;
+      top: 450px;
+      left: 50px;
+      right: 50px;
+      width: 50%;
+      margin-bottom: 0;
+      padding-bottom: 0;
     "
   >
+    <h1>Hi {{ this.user?.name }}</h1>
+    <p class="lead" style="width: 100%; margin-bottom: 0; padding-bottom: 0">
+      Welcome to Search, where you can Search for your favorite TV Shows
+    </p>
+  </div>
+</div>
+<div
+  class="card text-white bg-primary mb-3"
+  style="margin: auto; padding-top: 0; width: 50%"
+>
+  <div class="card-header"><h3>Search</h3></div>
+  <div class="card-body">
+    <p class="card-title" style="margin: auto; text-align: center">
+      Search for your favorite shows &nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input
+        #searchBox
+        id="search-box"
+        (input)="searchShows(searchBox.value)"
+      />
+    </p>
+  </div>
+</div>
+
+<div
+  class="search-result"
+  style="
+    max-width: 120%;
+    margin-top: 50px;
+    min-height: 750px;
+    max-height: 750px;
+  "
+>
+  <div
+    class="row row-cols-1 row-cols-md-4"
+    style="max-width: 120%; padding-left: 50px"
+  >
     <div
-      class="row row-cols-1 row-cols-md-4"
-      style="max-width: 120%; padding-left: 50px"
+      class="col"
+      style="width: 100%; margin-bottom: 40px"
+      *ngFor="let s of shows$ | async"
     >
-      <div
-        class="col"
-        style="width: 100%; margin-bottom: 40px"
-        *ngFor="let s of shows$ | async"
-      >
-        <div class="card" style="width: 70%">
-          <a href="{{ s.url }} " target="_blank"
-            ><img src="{{ s.image }}" style="width: 100%"
-          /></a>
-          <div
-            class="card-body"
-            style="width: 100%; min-height: 400px; max-height: 400px"
-          >
-            <h5 class="card-title font-weight-bolder">
-              {{ s.name }} 
-            </h5>
-            <p class="card-text text-left font-weight-lighter">
-              {{ s.summary }}
-            </p>
-            <div style="text-align: left">
-              <div>
-                <span>Status: </span>
-                <span>{{ s.status }}</span>
-              </div>
-              <div>
-                <span>Runtime: </span>
-                <span>{{ s.runtime }}</span>
-              </div>
-              <div>
-                <span>Premiered: </span>
-                <span>{{ s.premiered }}</span>
-              </div>
-              <div>
-                <span>Official Site: </span>
+      <div class="card" style="width: 70%">
+        <a href="{{ s.url }} " target="_blank"
+          ><img src="{{ s.image }}" style="width: 100%"
+        /></a>
+        <div
+          class="card-body"
+          style="width: 100%; min-height: 400px; max-height: 400px"
+        >
+          <h5 class="card-title font-weight-bolder">
+            {{ s.name }}
+          </h5>
+          <p class="card-text text-left font-weight-lighter">
+            {{ s.summary }}
+          </p>
+          <div style="text-align: left">
+            <div>
+              <span>Status: </span>
+              <span>{{ s.status }}</span>
+            </div>
+            <div>
+              <span>Runtime: </span>
+              <span>{{ s.runtime }}</span>
+            </div>
+            <div>
+              <span>Premiered: </span>
+              <span>{{ s.premiered }}</span>
+            </div>
+            <div>
+              <span>For More Information: </span>
+              <div *ngIf="s.officialSite != null; else other_content">
                 <span
-                  ><a href="{{ s.officialSite }}" target="_blank">{{
-                    s.officialSite
-                  }}</a></span
+                  ><a href="{{ s.officialSite }}" target="_blank">
+                    Here
+                  </a></span
                 >
               </div>
+              <ng-template #other_content>
+                <span><a href="{{ s.url }}" target="_blank"> Here </a></span>
+              </ng-template>
             </div>
           </div>
         </div>

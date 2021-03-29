@@ -1,1 +1,121 @@
-<p>profile works!</p>
+<app-navbar></app-navbar>
+<div class="jumbotron" style="margin-bottom: 0; padding-bottom: 0">
+  <img
+    class="image-center"
+    style="position: relative; width: 100%; margin-bottom: 0; padding-bottom: 0"
+    src="{{ image }}"
+  />
+  <div
+    style="
+      position: absolute;
+      top: 450px;
+      left: 50px;
+      right: 50px;
+      width: 50%;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    "
+  >
+    <h1>Hi {{ this.user?.name }}</h1>
+    <p class="lead" style="width: 100%; margin-bottom: 0; padding-bottom: 0">
+      Welcome to your profile, where you can view and update your personal
+      information
+    </p>
+  </div>
+</div>
+
+<div
+  class="card text-white bg-primary mb-3"
+  style="margin: auto; padding-top: 0; width: 50%"
+  id="register"
+>
+  <div class="card-header"><h3>View and Update Profile</h3></div>
+  <div class="card-body">
+    <p class="card-text">Please review the information below.</p>
+
+    <div class="form-group">
+      <label for="exampleInputEmail12">Email address</label>
+      <input
+        type="email"
+        [(ngModel)]="this.user.email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="Enter email"
+        ngDefaultControl
+      />
+      <small id="emailHelp" class="form-text text"
+        >We'll never share your email with anyone else.</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword12">Password</label>
+      <input
+        type="password"
+        [(ngModel)]="this.user.password"
+        class="form-control"
+        id="exampleInputPassword1"
+        placeholder="Password"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="firstName">First name</label>
+      <input
+        type="text"
+        [(ngModel)]="this.user.name"
+        class="form-control"
+        id="firstName"
+        placeholder="First name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last name</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="this.user.lastName"
+        id="lastName"
+        placeholder="Last name"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="city">City</label>
+      <input
+        type="text"
+        [(ngModel)]="this.user.city"
+        class="form-control"
+        id="city"
+        placeholder="City"
+      />
+    </div>
+    <a
+      type="button"
+      (click)="updateUserFromService()"
+      class="btn btn-secondary btn-lg"
+      style="text-decoration: none"
+    >
+      Update Profile</a
+    >
+
+    <div id="anime" *ngIf="clientMessage.message.length > 0">
+      {{ clientMessage.message }}
+    </div>
+  </div>
+</div>
+<div class="page-footer" style="background-color: #0f1824">
+  <p
+    class="small text-center"
+    style="padding-top: 40px; margin-bottom: 0; padding-bottom: 0"
+  >
+    © 2021 TV Show Assist, Inc. All Rights Reserved.
+  </p>
+  <p
+    class="small text-center"
+    style="margin-top: 0px; padding-bottom: 20px; margin-bottom: 0"
+  >
+    This website may contain mature content.
+  </p>
+</div>

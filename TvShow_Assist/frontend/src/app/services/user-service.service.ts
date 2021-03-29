@@ -43,6 +43,15 @@ public registerUserService(user: User): Observable<ClientMessage> {
   )
 }
 
+public updateUserService(user: User): Observable<ClientMessage> {
+  return this.http.post<ClientMessage>(`${HOST_URL}update`, user, this.httpOptions)
+
+  .pipe (
+    catchError(this.handleError<any>('cannot update user'))
+  )
+}
+
+
 shows: Shows = new Shows(0, "", "", "", "", 0, "", "", "", "");
 showList =  Array <Shows>();
 searchShows(term: string): Observable<Shows[]> {

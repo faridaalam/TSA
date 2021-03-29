@@ -1,3 +1,4 @@
+import { User } from './../models/user.model';
 import { UserServiceService } from './../services/user-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
@@ -12,9 +13,11 @@ import { Shows } from './../models/shows.model';
 export class SearchComponent implements OnInit {
 private searchTerm = new Subject<string>()
 shows$?:Observable<any>
+image = 'assets/Background.jpeg';
   constructor(private userService: UserServiceService) { }
-
+  public user: User = new User(0, '','','','','');
   ngOnInit(): void {
+    this.userService.currentUser.subscribe(user => this.user = user);
     this.shows$ = this.searchTerm
     .pipe (
       debounceTime(300),
