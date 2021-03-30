@@ -1,0 +1,5 @@
+package org.hibernate.boot;
+
+public class MetadataSources {
+
+}

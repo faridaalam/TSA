@@ -1,0 +1,97 @@
+package com.revature.model;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "FavShows")
+
+public class FavShows {
+	
+	@Id
+	@Column(name = "show_ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int sId;
+	
+	@Column(name = "show_name", nullable = false)
+	private String name;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "User_FK")
+	private int userHolder;
+	
+	public FavShows() {
+		
+	}
+	
+	
+
+	public FavShows(int sId, String name, int userHolder) {
+		super();
+		this.sId = sId;
+		this.name = name;
+		this.userHolder = userHolder;
+		
+		
+	}
+	
+	public FavShows(String name, User userHolder) {
+		super();
+		this.name = name;
+		this.userHolder = userHolder.getId();
+		
+		
+	}
+	
+	
+
+
+
+	public int getsId() {
+		return sId;
+	}
+
+
+
+	public void setsId(int sId) {
+		this.sId = sId;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public int getUserHolder() {
+		return userHolder;
+	}
+
+
+
+	public void setUserHolder(int userHolder) {
+		this.userHolder = userHolder;
+	}
+
+
+
+
+
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "FavShows [sId=" + sId + ", name=" + name + ", userHolder=" + userHolder + "]";
+	}
+
+}

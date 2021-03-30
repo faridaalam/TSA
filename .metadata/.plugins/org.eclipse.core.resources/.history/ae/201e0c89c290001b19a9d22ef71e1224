@@ -1,0 +1,43 @@
+package com.revature.test;
+
+import static org.junit.Assert.assertEquals;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.revature.repository.UserRepositoryImpl;
+import com.revature.service.UserServiceImpl;
+import com.revature.service.UserService;
+import com.revature.repository.UserRepository;
+
+
+
+
+public class ServiceTest {
+	
+	
+	private SessionFactory sessionFactory;
+	private Session session;
+	
+
+@Test
+void testGetUser()  {
+	UserRepositoryImpl findUser = new UserRepositoryImpl();
+	 assert(findUser.findById(1)) !=null;
+}
+
+@Test
+void testGetUsers()  {
+	UserRepositoryImpl getAll = new UserRepositoryImpl();
+	assert (getAll.findAll())  !=null;
+}
+	
+
+}
+
+
+

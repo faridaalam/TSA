@@ -1,0 +1,14 @@
+import com.revature.repository.UserRepositoryImpl;
+import com.revature.service.UserServiceImpl;
+
+public class Driver {
+
+	public static void main(String[] args) {
+	UserServiceImpl us = new UserServiceImpl();
+	
+	
+	System.out.println(us.getAllUsers());
+
+	}
+
+}

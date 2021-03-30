@@ -1,0 +1,78 @@
+package com.revature.test;
+
+import static org.junit.Assert.assertEquals;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.revature.repository.UserRepositoryImpl;
+import com.revature.service.UserServiceImpl;
+import com.revature.util.HibernateUtil;
+import com.revature.service.UserService;
+import com.revature.model.User;
+import com.revature.repository.UserRepository;
+
+
+
+
+public class ServiceTest {
+	
+
+	private static SessionFactory sessionFactory;
+	private Session session;
+	
+
+
+	
+	
+
+	
+	 UserRepositoryImpl userImpl = new UserRepositoryImpl();
+	
+	@Test
+     void setup() {
+        sessionFactory = HibernateUtil.getSessionFactory();
+        System.out.println("SessionFactory created");
+    }
+	
+	
+	@Test
+  void testGetUser()  {
+	System.out.println("RunningUserById Test");
+
+	
+	Integer id = 1;
+   
+	 System.out.println(sessionFactory);
+	User user = userImpl.findById(id);
+	 System.out.println(sessionFactory);
+
+	 
+	
+	assertEquals("Farid", user.getName());
+	
+	
+}
+
+@Test
+void testGetUsers()  {
+	UserRepositoryImpl getAll = new UserRepositoryImpl();
+	assert (getAll.findAll())  !=null;
+}
+	
+
+}
+
+
+

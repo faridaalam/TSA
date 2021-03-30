@@ -1,0 +1,11 @@
+package com.revature.model;
+
+import java.util.List;
+
+public class ListofShows {
+	
+	private List<FavShows> favShows;
+
+}
+
+

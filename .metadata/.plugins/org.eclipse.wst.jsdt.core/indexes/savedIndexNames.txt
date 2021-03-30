@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\wbe12\Desktop\TSA\TSA\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3171274595.index
+97267288.index
+1533515515.index
+2830767807.index
+2568239308.index
+3315412619.index

@@ -1,0 +1,23 @@
+package com.revature.model;
+import javax.persistence.*;
+
+@Entity(name = "ForeignKeyAssoEntity")
+@Table(name = "FavShows")
+
+public class FavShows {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "userSequence")
+	@SequenceGenerator (name="userSequence", sequenceName = "USER_SEQ", allocationSize=1)
+	private int sId;
+	
+	@Column(name = "show_name", nullable = false)
+	private String name;
+	
+	@Column (name = "uId", nullable = false)
+	@
+	private int uId;
+	
+	
+
+}

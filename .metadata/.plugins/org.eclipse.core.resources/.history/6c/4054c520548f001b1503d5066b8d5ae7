@@ -1,0 +1,12 @@
+import com.revature.repository.UserRepositoryImpl;
+
+public class Driver {
+
+	public static void main(String[] args) {
+	UserRepositoryImpl ur = new UserRepositoryImpl();
+	ur.findAll();
+	System.out.println(ur.findAll());
+
+	}
+
+}
