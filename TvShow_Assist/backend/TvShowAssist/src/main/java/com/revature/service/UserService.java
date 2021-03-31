@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 
+import com.revature.model.FavShows;
 import com.revature.model.LoginTemplate;
 import com.revature.model.User;
 
@@ -20,5 +21,9 @@ public interface UserService {
 	public User login(LoginTemplate loginTemplate);
 	
 	public boolean updateUser(User user);
+
+	boolean addFavShow(FavShows favshow);
+
+	List<Object> getAllShows(FavShows favshow);
 
 }

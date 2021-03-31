@@ -7,13 +7,17 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.model.FavShows;
 import com.revature.model.LoginTemplate;
 import com.revature.model.User;
 import com.revature.repository.UserRepository;
+import com.revature.repository.UserRepositoryImpl;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{
 	private static final Logger logger = Logger.getLogger(UserServiceImpl.class);
+	
+	public static UserRepository eDao = new UserRepositoryImpl();
 	
 	
 	@Autowired
@@ -28,7 +32,7 @@ public class UserServiceImpl implements UserService{
 	
 	try {
 		
-		userRepository.save(user);
+		getUserRepository().save(user);
 		return true;
 	} catch (Exception e) {
 		
@@ -39,17 +43,39 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public List<User> getAllUsers() {
-		return userRepository.findAll();
+		return getUserRepository().findAll();
+	}
+	
+	@Override
+	public boolean addFavShow(FavShows favshow){
+	
+	try {
+		System.out.println("AddingSHow");
+		System.out.println(favshow);
+		
+		getUserRepository().saveShow(favshow);
+		return true;
+	} catch (Exception e) {
+		
+		return false;
+	}
+	
+	}
+	
+
+	@Override
+	public List<Object> getAllShows(FavShows favshow) {
+		return (List<Object>) getUserRepository().findById1(favshow);
 	}
 
 	@Override
 	public User getUser(int id) {
-		return userRepository.findById(id);
+		return getUserRepository().findById(id);
 	}
 
 	@Override
 	public User getByEmail(String email) {
-		return userRepository.findByEmail(email);
+		return getUserRepository().findByEmail(email);
 	}
 
 	@Override
@@ -65,7 +91,7 @@ public class UserServiceImpl implements UserService{
 		//Test
 		System.out.println(matchEmail);
 		
-		User user = userRepository.findByEmail(matchEmail);
+		User user = getUserRepository().findByEmail(matchEmail);
 		System.out.println(user);
 		if (loginTemplate.getPassword().equals(user.getPassword())) {
 			return user;
@@ -78,12 +104,20 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public boolean updateUser(User user) {
 		try {
-			userRepository.update(user);
+			getUserRepository().update(user);
 			return true;
 		} catch (Exception e) {
 			
 			return false;
 		}
+	}
+
+	public UserRepository getUserRepository() {
+		return userRepository;
+	}
+
+	public void setUserRepository(UserRepository userRepository) {
+		this.userRepository = userRepository;
 	}
 	
 }

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.apache.log4j.Logger;
+
+import com.revature.model.FavShows;
 import com.revature.model.User;
 @Repository("userRepository")
 @Transactional
@@ -29,6 +31,35 @@ public class UserRepositoryImpl implements UserRepository{
 	
 		logger.info("User Tried to Register");	
 		sessionFactory.getCurrentSession().save(user);
+	}
+	
+	@Override
+	public boolean saveShow(FavShows favshow) {
+		sessionFactory.getCurrentSession().save(favshow);
+		return true;
+	
+	
+}
+
+	@Override
+	public List<Object> findById1(FavShows favshow) {
+		
+		try {
+			System.out.println(favshow.getUserHolder().getId());
+			return  sessionFactory.getCurrentSession().createCriteria(FavShows.class).add(Restrictions.like("user_fk", favshow.getUserHolder().getId()))
+					.list();
+//			return (List<Object>) sessionFactory.getCurrentSession().createQuery("select sId FROM FavShows WHERE user_fk = " + favshow.getUserHolder().getId());
+			
+//			String hql = "FROM favshows AS E";
+//			
+//			Query query = session.createQuery(hql);
+//			List results = query.list();
+//			return select user_fk FROM favshows WHERE user_fk = favshow.getUserHolder().getId())
+		}catch (IndexOutOfBoundsException e){
+			logger.debug(e);
+			return null;
+		}
+		
 	}
 
 	@Override

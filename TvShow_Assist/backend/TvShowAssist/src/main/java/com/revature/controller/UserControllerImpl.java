@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import static com.revature.util.ClientMessageUtil.*;
 
 import com.revature.ajax.ClientMessage;
+import com.revature.model.FavShows;
 import com.revature.model.LoginTemplate;
 import com.revature.model.User;
 import com.revature.service.UserService;
@@ -29,6 +30,20 @@ public class UserControllerImpl implements UserController{
 	@PostMapping("/register")
 	public @ResponseBody ClientMessage registerUser(@RequestBody User user) {
 		return (userService.registerUser(user)) ? REGISTRATION_SUCCESSFUL : SOMETHING_WRONG;
+	}
+	
+	@PostMapping("/favshow")
+	public @ResponseBody ClientMessage addFavShow(@RequestBody FavShows favshow ) {
+		System.out.println(favshow);
+		return (userService.addFavShow(favshow)) ? UPDATE_SUCCESSFUL : UPDATE_FAIL;
+	}
+	
+	@PostMapping("/returnfavshow")
+	public @ResponseBody ClientMessage getAllShows(@RequestBody FavShows favshow ) {
+		System.out.println(favshow);
+		System.out.println(favshow.getUserHolder());
+		System.out.println(favshow.getUserHolder());
+		return (userService.getAllShows(favshow)) != null ? UPDATE_SUCCESSFUL : UPDATE_FAIL;
 	}
 	
 	@PostMapping("/update")

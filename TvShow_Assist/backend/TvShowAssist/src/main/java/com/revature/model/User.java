@@ -2,7 +2,7 @@ package com.revature.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -31,25 +31,25 @@ public class User {
 	private String city;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="userHolder", fetch = FetchType.EAGER)
-	private List<FavShows>showList = new ArrayList<FavShows>();
+	private Set<FavShows>showList;
 	
 	
 	public User() {
 		
 	}
 
-
-	public User(int id, String name, String lastName, String email, String password, String city,
-			List<FavShows> showList) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-		this.city = city;
-		this.showList = showList;
-	}
+//
+//	public User(int id, String name, String lastName, String email, String password, String city,
+//			) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		this.lastName = lastName;
+//		this.email = email;
+//		this.password = password;
+//		this.city = city;
+//		this.showList = showList;
+//	}
 	
 	public User(int id, String name, String lastName, String email, String password, String city) {
 		super();
@@ -62,6 +62,7 @@ public class User {
 	}
 	
 	public User( String name, String lastName, String email, String password, String city) {
+		super();
 		this.name = name;
 		this.lastName = lastName;
 		this.email = email;
@@ -69,10 +70,66 @@ public class User {
 		this.city = city;
 	}
 	
-	
-	
-	
+	public User( int id) {
+		super();
+		this.id = id;
+	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public Set<FavShows> getShowList() {
+		return showList;
+	}
+
+	public void setShowList(Set<FavShows> showList) {
+		this.showList = showList;
+	}
 
 	@Override
 	public int hashCode() {
@@ -87,7 +144,6 @@ public class User {
 		result = prime * result + ((showList == null) ? 0 : showList.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -133,81 +189,12 @@ public class User {
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", lastName=" + lastName + ", email=" + email + ", password="
 				+ password + ", city=" + city + ", showList=" + showList + "]";
 	}
-
-
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
-	public String getLastName() {
-		return lastName;
-	}
-
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-
-	public String getCity() {
-		return city;
-	}
-
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-
-	public List<FavShows> getShowList() {
-		return showList;
-	}
-
-
-	public void setShowList(List<FavShows> showList) {
-		this.showList = showList;
-	}
-
+	
 }
+	
+	

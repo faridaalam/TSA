@@ -16,9 +16,8 @@ public class FavShows {
 	
 	
 	@ManyToOne
-	@JoinColumn(name = "User_FK")
+	@JoinColumn(name = "user_fk", nullable= false)
 	private User userHolder;
-	
 	public FavShows() {
 		
 	}
@@ -26,14 +25,45 @@ public class FavShows {
 	
 
 	public FavShows(int sId, String name, User userHolder) {
-		super();
+		
 		this.sId = sId;
 		this.name = name;
 		this.userHolder = userHolder;
 		
 		
 	}
-
+	
+	public FavShows(String name, User userHolder) {
+		super();
+		this.name = name;
+		this.userHolder = userHolder;
+		
+		
+	}
+	
+	public FavShows(String name) {
+		this.name = name;
+	
+	
+	}
+	
+	public FavShows(User userHolder) {
+		super();
+		this.userHolder = userHolder;
+	
+	
+	}
+	
+	
+	public FavShows(int sId) {
+		super();
+		this.sId = sId;
+	
+	
+	}
+	
+	
+	
 
 
 	public int getsId() {
